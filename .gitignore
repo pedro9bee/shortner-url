@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-
+/architecture/tmp
 # dependencies
 node_modules
 
@@ -37,3 +37,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Generated Docusaurus files
+.docusaurus/
+.cache-loader/

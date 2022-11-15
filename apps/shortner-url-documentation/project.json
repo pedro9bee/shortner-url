@@ -1,0 +1,21 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "shortner-url-documentation",
+  "projectType": "application",
+  "sourceRoot": "apps/shortner-url-documentation/src",
+  "targets": {
+    "build": {
+      "executor": "@nx-plus/docusaurus:browser",
+      "options": {
+        "outputPath": "dist/apps/shortner-url-documentation"
+      }
+    },
+    "serve": {
+      "executor": "@nx-plus/docusaurus:dev-server",
+      "options": {
+        "port": 3000
+      }
+    }
+  },
+  "tags": []
+}
