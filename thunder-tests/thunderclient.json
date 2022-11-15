@@ -1,0 +1,353 @@
+[
+  {
+    "_id": "02f692dc-f512-4eb5-b2c0-2697a9b21641",
+    "colId": "6157a087-1c7a-4f73-8239-f180d44374e1",
+    "containerId": "",
+    "name": "auth admin-cli",
+    "url": "http://localhost:8080/auth/realms/master/protocol/openid-connect/token",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-11-15T18:21:11.154Z",
+    "modified": "2022-11-15T18:55:18.355Z",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "grant_type",
+          "value": "password"
+        },
+        {
+          "name": "client_id",
+          "value": "admin-cli"
+        },
+        {
+          "name": "client_secret",
+          "value": "lHD7xcY1V5vOOjnDM8O4YsX35gdCSluI"
+        },
+        {
+          "name": "scope",
+          "value": "openid"
+        },
+        {
+          "name": "password",
+          "value": "admin"
+        },
+        {
+          "name": "username",
+          "value": "admin"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.access_token",
+        "action": "setto",
+        "value": "{{access_token}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.refresh_token",
+        "action": "setto",
+        "value": "{{refresh_token}}"
+      }
+    ]
+  },
+  {
+    "_id": "51fd11e2-94b0-4b9c-b7ed-21d3776857ea",
+    "colId": "6157a087-1c7a-4f73-8239-f180d44374e1",
+    "containerId": "",
+    "name": "createUser",
+    "url": "http://localhost:8080/auth/admin/realms/master/users",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-11-15T18:33:59.143Z",
+    "modified": "2022-11-15T18:56:57.993Z",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json"
+      },
+      {
+        "name": "Authorization",
+        "value": "Bearer {{access_token}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"firstName\": \"Thais\",\n  \"lastName\": \"Marins\",\n  \"email\": \"thaismarinslima@gmail.com\",\n  \"enabled\": true,\n  \"username\": \"tata\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "0d1696d9-6229-454d-832b-e444c98a106d",
+    "colId": "6157a087-1c7a-4f73-8239-f180d44374e1",
+    "containerId": "",
+    "name": "auth cocus",
+    "url": "http://localhost:8080/auth/realms/master/protocol/openid-connect/token",
+    "method": "POST",
+    "sortNum": 15000,
+    "created": "2022-11-15T18:52:31.249Z",
+    "modified": "2022-11-15T22:01:21.943Z",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "grant_type",
+          "value": "password"
+        },
+        {
+          "name": "client_id",
+          "value": "cocus"
+        },
+        {
+          "name": "client_secret",
+          "value": "lHD7xcY1V5vOOjnDM8O4YsX35gdCSluI"
+        },
+        {
+          "name": "scope",
+          "value": "openid"
+        },
+        {
+          "name": "password",
+          "value": "secret"
+        },
+        {
+          "name": "username",
+          "value": "plemos"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.access_token",
+        "action": "setto",
+        "value": "{{access_token}}"
+      }
+    ]
+  },
+  {
+    "_id": "611c3482-50e8-4b83-90ff-92999d92ee2e",
+    "colId": "4c3d6ca2-620c-4aae-9a8e-a5ec27a02063",
+    "containerId": "",
+    "name": "putMapping",
+    "url": "http://127.0.0.1:9200/demo-default/_doc/1",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-11-15T18:57:47.108Z",
+    "modified": "2022-11-15T21:58:52.235Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"message\": \"[5592:1:0309/123054.737712:ERROR:child_process_sandbox_support_impl_linux.cc(79)] FontService unique font name matching request did not receive a response.\",\n  \"fileset\": {\n    \"name\": \"syslog\"\n  },\n  \"process\": {\n    \"name\": \"org.gnome.Shell.desktop\",\n    \"pid\": 3383\n  },\n  \"@timestamp\": \"2020-03-09T18:00:54.000+05:30\",\n  \"host\": {\n    \"hostname\": \"bionic\",\n    \"name\": \"bionic\"\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f4fc281b-c986-4b37-ab4a-57a919108bad",
+    "colId": "4c3d6ca2-620c-4aae-9a8e-a5ec27a02063",
+    "containerId": "",
+    "name": "createMapping Copy",
+    "url": "http://localhost:9200/urls",
+    "method": "DELETE",
+    "sortNum": 20000,
+    "created": "2022-11-15T19:30:26.066Z",
+    "modified": "2022-11-15T19:30:35.271Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "45a7df31-c0c0-4c3d-99d9-10a7684313b6",
+    "colId": "4c3d6ca2-620c-4aae-9a8e-a5ec27a02063",
+    "containerId": "",
+    "name": "store",
+    "url": "http://localhost:9200/hr/_doc/1",
+    "method": "PUT",
+    "sortNum": 15000,
+    "created": "2022-11-15T19:31:17.827Z",
+    "modified": "2022-11-15T19:32:29.061Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"region\": \"US\",\n  \"manager\": {\n    \"name\": \"Alice White\",\n    \"age\": 30\n  },\n  \"employees\": [\n    {\n      \"name\": \"John Smith\",\n      \"age\": 34\n    },\n    {\n      \"name\": \"Peter Brown\",\n      \"age\": 26\n    }\n  ]\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "be297c7f-814d-4e49-a112-34446e7f0929",
+    "colId": "4c3d6ca2-620c-4aae-9a8e-a5ec27a02063",
+    "containerId": "",
+    "name": "Search in HR",
+    "url": "http://localhost:9200/hr/_search",
+    "method": "GET",
+    "sortNum": 17500,
+    "created": "2022-11-15T19:33:06.779Z",
+    "modified": "2022-11-15T21:46:57.451Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"query\": {\n    \"match\" : {\n        \"region\": \"US\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "c64e38cf-0ee8-4a22-9fda-59825ccad113",
+    "colId": "4c3d6ca2-620c-4aae-9a8e-a5ec27a02063",
+    "containerId": "",
+    "name": "getMapping",
+    "url": "http://localhost:9200/hr",
+    "method": "GET",
+    "sortNum": 12500,
+    "created": "2022-11-15T20:07:11.866Z",
+    "modified": "2022-11-15T20:07:30.768Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"mappings\": {\n    \"properties\": { \n      \"manager\": {\n        \"properties\": { \n          \"age\":  { \"type\": \"integer\" },\n          \"name\": { \"type\": \"text\"  }\n        }\n      },\n      \"employees\": {\n        \"type\": \"nested\",\n        \"properties\": { \n          \"age\":  { \"type\": \"integer\" },\n          \"name\": { \"type\": \"text\"  }\n        }\n      }\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "cf686ee4-aa5c-43ff-a3b8-72b1f3b29b86",
+    "colId": "4c3d6ca2-620c-4aae-9a8e-a5ec27a02063",
+    "containerId": "",
+    "name": "DeleteContent",
+    "url": "http://localhost:9200/hr/_doc/1",
+    "method": "DELETE",
+    "sortNum": 16250,
+    "created": "2022-11-15T21:28:31.473Z",
+    "modified": "2022-11-15T21:29:32.696Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "c2839c5b-5512-4e16-8cd4-f0fe3954ec9e",
+    "colId": "4c3d6ca2-620c-4aae-9a8e-a5ec27a02063",
+    "containerId": "",
+    "name": "getContent",
+    "url": "http://localhost:9200/hr/_doc/1",
+    "method": "GET",
+    "sortNum": 16875,
+    "created": "2022-11-15T21:29:16.216Z",
+    "modified": "2022-11-15T21:29:16.216Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "bf8ab52d-1ff7-46a9-9cbd-0b0145d5ae01",
+    "colId": "4c3d6ca2-620c-4aae-9a8e-a5ec27a02063",
+    "containerId": "",
+    "name": "update",
+    "url": "http://localhost:9200/hr/_doc/1?if_seq_no=8&if_primary_term=1",
+    "method": "PUT",
+    "sortNum": 15625,
+    "created": "2022-11-15T21:37:21.867Z",
+    "modified": "2022-11-15T21:43:38.365Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "if_seq_no",
+        "value": "8",
+        "isPath": false
+      },
+      {
+        "name": "if_primary_term",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"region\": \"US\",\n  \"manager\": {\n    \"name\": \"Alice White\",\n    \"age\": 30\n  },\n  \"employees\": [\n    {\n      \"name\": \"John Smith\",\n      \"age\": 34\n    },\n    {\n      \"name\": \"Peter Brown\",\n      \"age\": 26\n    }\n  ]\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5e97dfb3-56fe-45a0-9359-3cfd6a93bc92",
+    "colId": "4c3d6ca2-620c-4aae-9a8e-a5ec27a02063",
+    "containerId": "",
+    "name": "Search in HR2",
+    "url": "http://localhost:9200/hr/_search",
+    "method": "GET",
+    "sortNum": 18750,
+    "created": "2022-11-15T21:47:38.284Z",
+    "modified": "2022-11-15T21:49:45.103Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"query\": {\n    \"match_phrase\" : {\n        \"manager.name\": \"o\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "aa77544f-00e5-4865-b2b9-a092caefcdce",
+    "colId": "4c3d6ca2-620c-4aae-9a8e-a5ec27a02063",
+    "containerId": "",
+    "name": "createMappging",
+    "url": "http://localhost:9200/hr",
+    "method": "PUT",
+    "sortNum": 11250,
+    "created": "2022-11-15T21:56:22.643Z",
+    "modified": "2022-11-15T21:56:22.643Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"mappings\": {\n    \"properties\": { \n      \"manager\": {\n        \"properties\": { \n          \"age\":  { \"type\": \"integer\" },\n          \"name\": { \"type\": \"text\"  }\n        }\n      },\n      \"employees\": {\n        \"type\": \"nested\",\n        \"properties\": { \n          \"age\":  { \"type\": \"integer\" },\n          \"name\": { \"type\": \"text\"  }\n        }\n      }\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "0a29e668-6131-401a-b330-05edf38c3d3e",
+    "colId": "4c3d6ca2-620c-4aae-9a8e-a5ec27a02063",
+    "containerId": "",
+    "name": "getMappingFlatten",
+    "url": "http://localhost:9200/demo-default/_mappings",
+    "method": "GET",
+    "sortNum": 13750,
+    "created": "2022-11-15T21:57:46.684Z",
+    "modified": "2022-11-15T21:59:35.911Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"mappings\": {\n    \"properties\": { \n      \"manager\": {\n        \"properties\": { \n          \"age\":  { \"type\": \"integer\" },\n          \"name\": { \"type\": \"text\"  }\n        }\n      },\n      \"employees\": {\n        \"type\": \"nested\",\n        \"properties\": { \n          \"age\":  { \"type\": \"integer\" },\n          \"name\": { \"type\": \"text\"  }\n        }\n      }\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
