@@ -373,12 +373,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-15T22:26:08.044Z",
-    "modified": "2022-11-15T22:27:10.069Z",
+    "modified": "2022-11-16T15:40:05.364Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\" : \"Pedro\"\n}",
+      "raw": "{\n  \"name\" : \"Pedro asdasdas\"\n}",
       "form": []
     },
     "tests": []
@@ -389,15 +389,53 @@
     "containerId": "",
     "name": "getURLLong",
     "url": "http://localhost:3333/api/url/visit/123123",
-    "method": "POST",
+    "method": "GET",
     "sortNum": 30000,
     "created": "2022-11-15T22:27:31.288Z",
-    "modified": "2022-11-15T22:31:32.875Z",
+    "modified": "2022-11-15T22:39:56.630Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
       "raw": "{\n  \"name\" : \"Pedro\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "db959994-cc70-4e28-9f35-aed63ca6b99c",
+    "colId": "d406995a-b1b9-4473-8d53-9bf12ef62681",
+    "containerId": "",
+    "name": "userLogin",
+    "url": "http://localhost:3333/api/user/register",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-11-15T22:40:51.015Z",
+    "modified": "2022-11-15T22:43:52.242Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\" : \"plemos\",\n  \"password\" : \"123456qweqweqwe\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5e481d34-24b3-4b8e-af67-73c221c80427",
+    "colId": "d406995a-b1b9-4473-8d53-9bf12ef62681",
+    "containerId": "",
+    "name": "registerLogin",
+    "url": "http://localhost:3333/api/user/login",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-11-15T22:43:11.169Z",
+    "modified": "2022-11-15T22:43:11.169Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\" : \"plemos\",\n  \"password\" : \"123456\"\n}",
       "form": []
     },
     "tests": []

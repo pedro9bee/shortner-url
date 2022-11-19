@@ -16,7 +16,7 @@ export class AppController {
     return this.appService.createShortURL(body);
   }
 
-  @Post('/visit/:shortURL')
+  @Get('/visit/:shortURL')
   createShortURL(@Param('shortURL') shortURL) {
     return this.appService.getShortURL(shortURL);
   }

@@ -57,6 +57,20 @@ services:
     networks:
       - docker-elk
 
+  api-db:
+    image: postgres
+    container_name: api-db
+    environment:
+        POSTGRES_DB: cocus
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: password
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./tmp/postgres:/var/lib/postgresql-api-db/data
+    networks:
+      - docker-elk
+
   keycloak:
     image: quay.io/keycloak/keycloak:legacy
     container_name: keycloak
