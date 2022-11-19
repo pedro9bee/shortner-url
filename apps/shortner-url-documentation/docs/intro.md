@@ -2,32 +2,13 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# About Me
 
-Let's discover **Docusaurus in less than 5 minutes**.
+### Personal Data:
+Name: Pedro Lemos
 
-## Getting Started
+Date of Birth: 02 June 1979
 
-Get started by **creating a new site**.
+Location: Lisbon
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**:
-
-```shell
-nx generate @nx-plus/docusaurus:app my-app
-```
-
-## Start your site
-
-Run the development server:
-
-```shell
-nx serve my-app
-```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and displays your changes.
+E-mail: pedro9bee@gmail.com

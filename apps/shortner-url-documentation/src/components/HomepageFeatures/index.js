@@ -1,27 +1,33 @@
 import React from 'react';
 import clsx from 'clsx';
-import styles from './HomepageFeatures.module.css';
+import styles from './styles.module.css';
 
-type FeatureItem = {
-  title: string;
-  image: string;
-  description: JSX.Element;
-};
-
-const FeatureList: FeatureItem[] = [
+const FeatureList = [
   {
-    title: 'Easy to Use',
-    image: '/img/undraw_docusaurus_mountain.svg',
+    title: 'Keycloak',
+    Svg: require('@site/static/img/keycloak.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Redis will be used to quickly create pair value for: <br />
+        Shorten URL - Full URL <br />
+        User Access - Shorten URL <br />  
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    image: '/img/undraw_docusaurus_tree.svg',
+    title: 'Redis',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    description: (
+      <>
+        Redis will be used to quickly create pair value for: <br />
+        Shorten URL - Full URL <br />
+        User Access - Shorten URL <br />  
+      </>
+    ),
+  },
+  {
+    title: 'ELK',
+    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
@@ -30,8 +36,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Powered by React',
-    image: '/img/undraw_docusaurus_react.svg',
+    title: 'Lambda / Docker',
+    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
         Extend or customize your website layout by reusing React. Docusaurus can
@@ -41,11 +47,11 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({ title, image, description }: FeatureItem) {
+function Feature({Svg, title, description}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <img className={styles.featureSvg} alt={title} src={image} />
+        <Svg className={styles.featureSvg} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
@@ -55,7 +61,7 @@ function Feature({ title, image, description }: FeatureItem) {
   );
 }
 
-export default function HomepageFeatures(): JSX.Element {
+export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
