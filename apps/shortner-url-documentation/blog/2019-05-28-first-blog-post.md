@@ -9,4 +9,5 @@ authors:
 tags: [hola, docusaurus]
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+To run Postgres on linux you have to use:
+sudo chown -R 1000:1000 ./tmp/postgres/
