@@ -11,3 +11,5 @@ tags: [hola, docusaurus]
 
 To run Postgres on linux you have to use:
 sudo chown -R 1000:1000 ./tmp/postgres/
+
+npx nx g @nrwl/nest:module shared
