@@ -373,12 +373,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-15T22:26:08.044Z",
-    "modified": "2022-11-22T07:29:29.696Z",
+    "modified": "2022-11-22T08:10:56.820Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"firstName\": \"Tatiana\",\n    \"lastName\": \"Moco\",\n    \"email\": \"tati@gmail.com\",\n    \"password\": \"123\"\n}",
+      "raw": "{\n    \"firstName\": \"Tatiana3\",\n    \"lastName\": \"Moco3\",\n    \"email\": \"tati3@gmail.com\",\n    \"password\": \"123\"\n}",
       "form": []
     },
     "tests": []
