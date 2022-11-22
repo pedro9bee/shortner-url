@@ -11,5 +11,14 @@ tags: [hola, docusaurus]
 
 To run Postgres on linux you have to use:
 sudo chown -R 1000:1000 ./tmp/postgres/
-
 npx nx g @nrwl/nest:module shared
+npm i @prisma/client
+npm i -D prisma
+npx prisma migrate dev
+npx prisma studio
+
+"resolveJsonModule": true,
+
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"resolveJsonModule\":true} prisma/seed.ts"
+  }
