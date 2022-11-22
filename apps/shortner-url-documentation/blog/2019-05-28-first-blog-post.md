@@ -17,8 +17,10 @@ npm i -D prisma
 npx prisma migrate dev
 npx prisma studio
 
-"resolveJsonModule": true,
+"prisma": {
+"seed": "ts-node --compiler-options {\"resolveJsonModule\":true} prisma/seed.ts"
+}
 
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"resolveJsonModule\":true} prisma/seed.ts"
-  }
+id String @id @default(cuid())
+
+npx nx generate @nrwl/nest:library users --controller --service

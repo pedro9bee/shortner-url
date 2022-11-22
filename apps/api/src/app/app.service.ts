@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PostURL } from '../dto/PostURL';
+import { PostURL } from '@cocus/types';
 
 @Injectable()
 export class AppService {

@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { PostURL } from '../dto/PostURL';
+import { PostURL } from '@cocus/types';
 import { AppService } from './app.service';
 
 @Controller('url')

@@ -369,11 +369,11 @@
     "colId": "d406995a-b1b9-4473-8d53-9bf12ef62681",
     "containerId": "",
     "name": "user/register",
-    "url": "http://localhost:3333/api/user/register",
+    "url": "http://localhost:3333/api/users/register",
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-15T22:26:08.044Z",
-    "modified": "2022-11-20T09:20:30.429Z",
+    "modified": "2022-11-22T07:29:29.696Z",
     "headers": [],
     "params": [],
     "body": {
