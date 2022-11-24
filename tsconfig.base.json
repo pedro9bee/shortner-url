@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@cocus/auth": ["libs/auth/src/index.ts"],
+      "@cocus/shared": ["libs/shared/src/index.ts"],
       "@cocus/types": ["libs/types/src/index.ts"],
+      "@cocus/url": ["libs/url/src/index.ts"],
       "@cocus/users": ["libs/users/src/index.ts"]
     }
   },

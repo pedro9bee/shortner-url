@@ -1,2 +1,2 @@
 export * from './lib/UserDTO';
-export * from './lib/PostURL';
+export * from './lib/URLDTO';

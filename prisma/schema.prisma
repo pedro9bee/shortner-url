@@ -14,9 +14,21 @@ model User {
   id        Int      @id @default(autoincrement())
   name      String?
   email     String   @unique
-  password  String   @select(false)
+  password  String
   firstName String
   lastName  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  url       Url[]
+}
+
+model Url {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  shortURL  String   @unique
+  longURL   String
+  type      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

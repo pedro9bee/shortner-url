@@ -55,7 +55,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./tmp/postgres:/var/lib/postgresql/data
+      - ./tmp/postgres/keycloak:/var/lib/postgresql/data
     networks:
       - docker-elk
 
@@ -69,7 +69,7 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - ./tmp/postgres:/var/lib/postgresql-api-db/data
+      - ./tmp/postgres/api-db:/var/lib/postgresql-api-db/data
     networks:
       - docker-elk
 
@@ -79,7 +79,7 @@ services:
     volumes:
       - ./keycloak/realm_common.json:/tmp/my_realm.json
     environment:
-      KEYCLOAK_IMPORT: '/tmp/my_realm.json'
+      # KEYCLOAK_IMPORT: '/tmp/my_realm.json'
       JAVA_OPTS_APPEND: "-Dkeycloak.profile.feature.upload_scripts=enabled -Dkeycloak.profile.feature.declarative_user_profile=enabled"
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin

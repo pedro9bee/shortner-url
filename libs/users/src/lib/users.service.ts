@@ -9,10 +9,14 @@ export class UsersService {
     public getUsers(): Promise<User[]> {
         return prisma.user.findMany({ take: 10 });
     }
-    public async register(@Body() body): Promise<Omit<User, "password">>{
+
+    public async register(@Body() body): Promise<User>{
         const user = await prisma.user.create({data: body})
         const userWithoutPassword = exclude(user, ['password'])
-        return userWithoutPassword;
+        return {
+            ...userWithoutPassword,
+            password:""
+        };
     }
 }
 function exclude<User, Key extends keyof User>(

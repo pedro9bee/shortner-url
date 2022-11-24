@@ -94,12 +94,22 @@
     "colId": "6157a087-1c7a-4f73-8239-f180d44374e1",
     "containerId": "",
     "name": "auth cocus",
-    "url": "http://localhost:8080/auth/realms/master/protocol/openid-connect/token",
+    "url": "http://localhost:8080/auth/realms/Ninebee/protocol/openid-connect/token",
     "method": "POST",
     "sortNum": 15000,
     "created": "2022-11-15T18:52:31.249Z",
-    "modified": "2022-11-20T02:02:13.187Z",
+    "modified": "2022-11-23T07:43:49.556Z",
     "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      },
       {
         "name": "Content-Type",
         "value": "application/x-www-form-urlencoded"
@@ -116,11 +126,11 @@
         },
         {
           "name": "client_id",
-          "value": "9bee"
+          "value": "shorther-url"
         },
         {
           "name": "client_secret",
-          "value": "zpvVkEq2NZ7ij66Eh4pltrpY0bo6Sj3F"
+          "value": "znPl3NKpUxDtEzZihser6HK5vpmKM5h1"
         },
         {
           "name": "scope",
@@ -133,6 +143,11 @@
         {
           "name": "username",
           "value": "plemos"
+        },
+        {
+          "name": "client_assertion_type",
+          "value": "",
+          "isDisabled": true
         }
       ]
     },
@@ -407,16 +422,16 @@
     "colId": "d406995a-b1b9-4473-8d53-9bf12ef62681",
     "containerId": "",
     "name": "userLogin",
-    "url": "http://localhost:3333/api/user/register",
+    "url": "http://localhost:3333/api/auth/login",
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-15T22:40:51.015Z",
-    "modified": "2022-11-15T22:43:52.242Z",
+    "modified": "2022-11-23T06:38:01.209Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\" : \"plemos\",\n  \"password\" : \"123456qweqweqwe\"\n}",
+      "raw": "{\n  \"username\": \"plemos\",\n  \"password\": \"secret\"\n}",
       "form": []
     },
     "tests": []
@@ -426,16 +441,16 @@
     "colId": "d406995a-b1b9-4473-8d53-9bf12ef62681",
     "containerId": "",
     "name": "registerLogin",
-    "url": "http://localhost:3333/api/user/login",
+    "url": "http://localhost:3333/api/url/create",
     "method": "POST",
     "sortNum": 30000,
     "created": "2022-11-15T22:43:11.169Z",
-    "modified": "2022-11-15T22:43:11.169Z",
+    "modified": "2022-11-24T07:31:41.562Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\" : \"plemos\",\n  \"password\" : \"123456\"\n}",
+      "raw": "{\n  \"userId\" : 1,\n  \"shortURL\": \"http://localhost:3000/url/1234-1234-1234-1234\",\n  \"longURL\" : \"http://www.google.com\",\n  \"type\": \"lead\"\n}",
       "form": []
     },
     "tests": []

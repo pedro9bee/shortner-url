@@ -1,8 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { PostURL } from '@cocus/types';
 import { AppService } from './app.service';
 
-@Controller('url')
+@Controller('main')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -11,10 +10,6 @@ export class AppController {
     return this.appService.getData();
   }
 
-  @Post('/generateShortnerURL')
-  shortnerURL(@Body() body: PostURL) {
-    return this.appService.createShortURL(body);
-  }
 
   @Get('/visit/:shortURL')
   createShortURL(@Param('shortURL') shortURL) {
