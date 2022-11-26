@@ -1,7 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '@cocus/shared';
-
+import { AbstractService } from '@cocus/shared';
 @Injectable()
-export class URLService{
-    constructor(private prisma: PrismaService) {}
+export class URLService extends AbstractService{
 }

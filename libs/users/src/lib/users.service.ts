@@ -1,24 +1,18 @@
 import { Body, Injectable } from '@nestjs/common';
-import { PrismaClient, User } from '@prisma/client';
-
-const prisma = new PrismaClient();
-
-
+import { AbstractService } from '@cocus/shared';
 @Injectable()
-export class UsersService {
-    public getUsers(): Promise<User[]> {
-        return prisma.user.findMany({ take: 10 });
-    }
+export class UsersService extends AbstractService{
 
-    public async register(@Body() body): Promise<User>{
-        const user = await prisma.user.create({data: body})
-        const userWithoutPassword = exclude(user, ['password'])
-        return {
-            ...userWithoutPassword,
-            password:""
-        };
-    }
+  async save(@Body() body): Promise<any>{
+    const user = await this.prisma.user.create({data: body})
+    const userWithoutPassword = exclude(user, ['password'])
+    return {
+        ...userWithoutPassword,
+        password:""
+    };
+  }
 }
+
 function exclude<User, Key extends keyof User>(
     user: User,
     keys: Key[]
