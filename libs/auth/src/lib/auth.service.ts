@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { firstValueFrom, map, tap } from 'rxjs';
 import {Authenticate} from "@cocus/types"
 import {UserRegistrationDTO} from "@cocus/types"
+
 @Injectable()
 export class AuthService {
     constructor(private readonly httpService: HttpService){}
@@ -53,7 +54,7 @@ export class AuthService {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${respAuth.access_token}`
         };
-        console.log(JSON.stringify(headersRequest))
+        
         
         const dataBody = {
             "firstName": user.firstName,
@@ -65,14 +66,12 @@ export class AuthService {
           } 
 
         const body = JSON.stringify(dataBody);
-        
+
         try{
             const resp = await firstValueFrom(this.httpService.post('http://localhost:8080/auth/admin/realms/Ninebee/users', 
             body,
             { headers: headersRequest },
             ));
-            console.log(resp);
-            // return null;
         }catch(err){
             return new Error(err);
         }

@@ -7,7 +7,10 @@ import { AuthModule} from '@cocus/auth';
 import { URLModule } from '@cocus/url';
 
 @Module({
-  imports: [AuthModule, URLModule, UsersModule],
+  imports: [
+    AuthModule, 
+    URLModule, 
+    UsersModule],
   controllers: [AppController],
   providers: [AppService],
 })

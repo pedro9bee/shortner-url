@@ -16,7 +16,7 @@ class UserRegistrationDTO{
     email: string;
  
     @IsNotEmpty()
-    credentials: typeof Credentials;
+    credentials: Credentials[];
     
     @IsNotEmpty()
     userName: string;
@@ -26,4 +26,4 @@ class Credentials{
     type: string;
     value: string;
 }
-export { UserRegistrationDTO };
+export { UserRegistrationDTO, Credentials };

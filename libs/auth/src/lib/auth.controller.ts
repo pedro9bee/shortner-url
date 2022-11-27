@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Post, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {Response} from "express";
 import { Authenticate, UserRegistrationDTO } from '@cocus/types';
@@ -11,7 +11,6 @@ export class AuthController {
     @Body() body: UserRegistrationDTO,
     @Res({passthrough: true}) response: Response,){
       const registerUser = await this.authService.register(body);
-      console.log(registerUser);
       response.status(200).send({registerUser});
   }
 

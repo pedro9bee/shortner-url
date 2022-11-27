@@ -7,7 +7,6 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 export class JwtStrategyService extends PassportStrategy(Strategy, 'jwt') {
   
   constructor(configService: ConfigService) {
-    console.log('JwtStrategyService');
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,

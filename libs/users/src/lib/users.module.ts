@@ -1,13 +1,15 @@
 import { Module } from '@nestjs/common';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
-import { PrismaService } from '@cocus/shared';
 import { AbstractService } from '@cocus/shared';
+import { AuthModule } from '@cocus/auth';
 
-@Module({
+
+@Module({ 
+  imports: [AuthModule],
   controllers: [UsersController],
-  providers: [UsersService, PrismaService, AbstractService],
+  providers: [UsersService, AbstractService],
   exports: [UsersService],
 })
 export class UsersModule {}
- 
+  

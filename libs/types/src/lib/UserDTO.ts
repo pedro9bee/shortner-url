@@ -17,8 +17,7 @@ class UserDTO{
     @IsEmail()
     email: string;
  
-    @IsNotEmpty()
-    password: string;
+    password?: string;
     
 }
 export { UserDTO };
