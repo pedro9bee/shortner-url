@@ -66,11 +66,11 @@
     "colId": "6157a087-1c7a-4f73-8239-f180d44374e1",
     "containerId": "",
     "name": "createUser",
-    "url": "http://localhost:8080/auth/admin/realms/master/users",
+    "url": "http://localhost:8080/auth/admin/realms/Ninebee/users",
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-15T18:33:59.143Z",
-    "modified": "2022-11-15T18:56:57.993Z",
+    "modified": "2022-11-26T10:11:22.091Z",
     "headers": [
       {
         "name": "Content-Type",
@@ -84,7 +84,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"firstName\": \"Thais\",\n  \"lastName\": \"Marins\",\n  \"email\": \"thaismarinslima@gmail.com\",\n  \"enabled\": true,\n  \"username\": \"tata\"\n}",
+      "raw": "{\n  \"firstName\": \"Thais\",\n  \"lastName\": \"Marins\",\n  \"email\": \"thaismarinslima@gmail.com\",\n  \"enabled\": true,\n  \"username\": \"tata\",\n  \"credentials\": [\n    {\n        \"type\": \"password\",\n        \"value\": \"myPassword\"\n    }\n  ]\n}",
       "form": []
     },
     "tests": []
@@ -384,16 +384,16 @@
     "colId": "d406995a-b1b9-4473-8d53-9bf12ef62681",
     "containerId": "",
     "name": "user/register",
-    "url": "http://localhost:3333/api/users/register",
+    "url": "http://localhost:3333/api/auth/register",
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-15T22:26:08.044Z",
-    "modified": "2022-11-22T08:10:56.820Z",
+    "modified": "2022-11-27T09:02:56.970Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"firstName\": \"Tatiana3\",\n    \"lastName\": \"Moco3\",\n    \"email\": \"tati3@gmail.com\",\n    \"password\": \"123\"\n}",
+      "raw": "{\n    \"firstName\": \"Tatiana3\",\n    \"lastName\": \"Moco3\",\n    \"userName\": \"tatichata\",\n    \"email\": \"tati3@gmail.com\",\n    \"enabled\": true,\n    \"credentials\": [\n    {\n        \"type\": \"password\",\n        \"value\": \"myPassword\"\n    } \n  ]\n}",
       "form": []
     },
     "tests": []
@@ -402,7 +402,7 @@
     "_id": "b64361c1-9127-4448-b0c1-6bd7e871f872",
     "colId": "d406995a-b1b9-4473-8d53-9bf12ef62681",
     "containerId": "",
-    "name": "getURLLong",
+    "name": "url/visit",
     "url": "http://localhost:3333/api/url/visit/123123",
     "method": "GET",
     "sortNum": 30000,
@@ -421,26 +421,33 @@
     "_id": "db959994-cc70-4e28-9f35-aed63ca6b99c",
     "colId": "d406995a-b1b9-4473-8d53-9bf12ef62681",
     "containerId": "",
-    "name": "userLogin",
+    "name": "auth/login",
     "url": "http://localhost:3333/api/auth/login",
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-15T22:40:51.015Z",
-    "modified": "2022-11-23T06:38:01.209Z",
+    "modified": "2022-11-26T10:12:03.334Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"username\": \"plemos\",\n  \"password\": \"secret\"\n}",
+      "raw": "{\n  \"username\": \"tata\",\n  \"password\": \"myPassword\"\n}",
       "form": []
     },
-    "tests": []
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.access_token",
+        "action": "setto",
+        "value": "{{access_token}}"
+      }
+    ]
   },
   {
     "_id": "5e481d34-24b3-4b8e-af67-73c221c80427",
     "colId": "d406995a-b1b9-4473-8d53-9bf12ef62681",
     "containerId": "",
-    "name": "registerLogin",
+    "name": "url/create",
     "url": "http://localhost:3333/api/url/create",
     "method": "POST",
     "sortNum": 30000,

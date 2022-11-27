@@ -8,13 +8,22 @@ class UserRegistrationDTO{
     @IsNotEmpty()
     lastName: string;
 
+    @IsNotEmpty()
+    enabled: boolean;
 
     @IsNotEmpty()
     @IsEmail()
     email: string;
  
     @IsNotEmpty()
-    password: string;
+    credentials: typeof Credentials;
     
+    @IsNotEmpty()
+    userName: string;
+    
+}
+class Credentials{
+    type: string;
+    value: string;
 }
 export { UserRegistrationDTO };
