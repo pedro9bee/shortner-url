@@ -19,6 +19,8 @@ sudo chown -R 1000:1000 ./tmp/postgres/api-db/
 sudo chown -R 1000:1000 ./tmp/esdata
 sudo chown -R 1000:1000 ./tmp/redis
 
+docker volume create pgdata
+
 # Nest to Create
 
 npx nx g @nrwl/nest:module shared

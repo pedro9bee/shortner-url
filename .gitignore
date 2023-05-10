@@ -4,7 +4,10 @@
 /dist
 /tmp
 /out-tsc
-/architecture/tmp
+/architecture/esdata
+/architecture/localstack
+/architecture/postgres
+/architecture/redis
 # dependencies
 node_modules
 

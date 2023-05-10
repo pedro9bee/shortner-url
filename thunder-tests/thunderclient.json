@@ -426,12 +426,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-15T22:40:51.015Z",
-    "modified": "2022-11-26T10:12:03.334Z",
+    "modified": "2022-11-30T06:05:20.454Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"username\": \"tata\",\n  \"password\": \"myPassword\"\n}",
+      "raw": "{\n  \"username\": \"plemos\",\n  \"password\": \"secret\"\n}",
       "form": []
     },
     "tests": [

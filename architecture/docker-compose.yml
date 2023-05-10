@@ -1,31 +1,42 @@
 # This is purely a development setup. DO NOT RUN THIS IN PRODUCTION
-version: '3.7'
+version: '3.8'
 
 services:
   # NOTE: You will need to up the max map count on your system
   #       sudo sysctl -w vm.max_map_count=262144
+  prepare-all:
+    container_name: pre-launch  
+    build:
+      context: .
+      dockerfile: DockerFilePrepareAll
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
     container_name: elasticsearch
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    networks:
-      docker-elk:  
-    environment:
-      discovery.type: "single-node"
-      ES_JAVA_OPTS: "-Xms2g -Xmx2g"
-      xpack.monitoring.enabled: "true"
     ulimits:
       memlock:
         soft: -1
         hard: -1  
+    user: "1000:1000"    
     volumes:
-      - ./tmp/esdata:/usr/share/elasticsearch/data
+      - ./esdata:/var/lib/elasticsearch/data
+    environment:
+      discovery.type: "single-node"
+      ES_JAVA_OPTS: "-Xms2g -Xmx2g"
+      xpack.monitoring.enabled: "true"
+      bootstrap.memory_lock: "true" 
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    depends_on:
+      - prepare-all
+    networks:
+      - docker-elk
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.7.0
     container_name: kibana
+    user: "1000:1000"
     environment:
       - "ELASTICSEARCH_URL=http://elasticsearch:9200"
     ports:
@@ -34,63 +45,77 @@ services:
       - docker-elk
     depends_on:
       - elasticsearch
+      - prepare-all
 
   redis:
     image: redis:5.0-alpine
     container_name: redis
+    user: "1000:1000"
     ports:
       - "6379:6379"
     volumes:
-      - ./tmp/redis:/data
+      - ./redis:/data
+    depends_on:
+      - prepare-all  
     networks:
       - docker-elk
 
   postgres:
-    image: postgres
     container_name: postgres
+    image: postgres:15.1
     environment:
-        POSTGRES_DB: keycloak
-        POSTGRES_USER: keycloak
-        POSTGRES_PASSWORD: password
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      PGDATA: postgres-data
+      POSTGRES_MULTIPLE_DATABASES: cocus,rhadmin
+    volumes:
+       - postgres-data:/data/postgres
     ports:
       - "5432:5432"
-    volumes:
-      - ./tmp/postgres/keycloak:/var/lib/postgresql/data
+    restart: unless-stopped
     networks:
       - docker-elk
 
-  api-db:
-    image: postgres
-    container_name: api-db
-    environment:
-        POSTGRES_DB: cocus
-        POSTGRES_USER: admin
-        POSTGRES_PASSWORD: password
+  mysql:
+    image: mysql:5.7.40
+    container_name: mysql
+    user: "1000:1000"
     ports:
-      - "5433:5432"
-    volumes:
-      - ./tmp/postgres/api-db:/var/lib/postgresql-api-db/data
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=keycloak
+      - MYSQL_USER=keycloak
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=root_password
+    healthcheck:
+      test: "mysqladmin ping -u root -p$${MYSQL_ROOT_PASSWORD}"
+    depends_on:
+      - prepare-all  
     networks:
       - docker-elk
 
   keycloak:
-    image: quay.io/keycloak/keycloak:legacy
+    image: quay.io/keycloak/keycloak:20.0.0
+    restart: unless-stopped
+    user: "1000:1000"
     container_name: keycloak
-    volumes:
-      - ./keycloak/realm_common.json:/tmp/my_realm.json
+    stdin_open: true
     environment:
-      # KEYCLOAK_IMPORT: '/tmp/my_realm.json'
-      JAVA_OPTS_APPEND: "-Dkeycloak.profile.feature.upload_scripts=enabled -Dkeycloak.profile.feature.declarative_user_profile=enabled"
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
-      DB_DATABASE: keycloak
-      DB_USER: keycloak
-      DB_SCHEMA: public
-      DB_PASSWORD: password
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB=mysql
+      - KC_DB_URL_HOST=mysql
+      - KC_DB_URL_DATABASE=keycloak
+      - KC_DB_USERNAME=keycloak
+      - KC_DB_PASSWORD=password
     ports:
-      - 8080:8080
+      - "8080:8080"
+    command: start-dev
+    depends_on:
+      - prepare-all
+      - mysql
+    healthcheck:
+      test: "curl -f http://localhost:8080/admin || exit 1"
     networks:
       - docker-elk
 
@@ -105,10 +130,13 @@ services:
       - EDGE_PORT=4566
       - DEBUG=1
     volumes:
-      - "${TEMPDIR:-/tmp/localstack}:/tmp/localstack"
+      - "./localstack:/var/lib/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
       - docker-elk
+
+volumes:
+  postgres-data:
 
 networks:
   docker-elk:
